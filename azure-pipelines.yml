@@ -13,10 +13,10 @@ parameters:
     type: string
 
 pool:
-  name: 'skr-azure-pipeline'
+  name: 'ys-skr-test'
 
 variables:
-  - group: terraform-dns-record
+  - group: YS-SKR-test
   - name: WORK_DIR
     value: '$(BASE_DIR)/runs/${{ parameters.REQUEST_ID }}'
   - name: STATE_DIR
@@ -90,7 +90,7 @@ stages:
         steps:
           - task: AzureCLI@2
             inputs:
-              azureSubscription: 'SKR-Service-Connection'
+              azureSubscription: 'YS-Service-Connetion'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: |
@@ -106,7 +106,7 @@ stages:
         steps:
           - task: AzureCLI@2
             inputs:
-              azureSubscription: 'SKR-Service-Connection'
+              azureSubscription: 'YS-Service-Connetion'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: |
@@ -153,7 +153,7 @@ stages:
               steps:
                 - task: AzureCLI@2
                   inputs:
-                    azureSubscription: 'SKR-Service-Connection'
+                    azureSubscription: 'YS-Service-Connetion'
                     scriptType: 'bash'
                     scriptLocation: 'inlineScript'
                     inlineScript: |
