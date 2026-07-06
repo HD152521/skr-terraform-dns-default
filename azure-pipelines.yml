@@ -82,6 +82,8 @@ stages:
     jobs:
       - job: TerraformInit
         steps:
+          - checkout: self
+          
           - task: AzureCLI@2
             inputs:
               azureSubscription: 'YS-Serivce-Connection-Test'
@@ -98,6 +100,8 @@ stages:
     jobs:
       - job: TerraformPlan
         steps:
+          - checkout: self
+          
           - task: AzureCLI@2
             inputs:
               azureSubscription: 'YS-Serivce-Connection-Test'
@@ -117,6 +121,8 @@ stages:
     jobs:
       - job: SendPlanResult
         steps:
+          - checkout: self
+          
           - task: Bash@3
             displayName: 'Send Plan Result'
             inputs:
@@ -147,6 +153,8 @@ stages:
           runOnce:
             deploy:
               steps:
+                - checkout: self
+                
                 - task: AzureCLI@2
                   inputs:
                     azureSubscription: 'YS-Serivce-Connection-Test'
@@ -166,6 +174,8 @@ stages:
     jobs:
       - job: SendSuccess
         steps:
+          - checkout: self
+          
           - task: Bash@3
             displayName: 'Notify Pipeline Success'
             inputs:
@@ -188,6 +198,8 @@ stages:
     jobs:
       - job: SendErrorLog
         steps:
+          - checkout: self
+          
           - task: Bash@3
             displayName: 'Notify Pipeline Failure with Local Logs'
             inputs:
